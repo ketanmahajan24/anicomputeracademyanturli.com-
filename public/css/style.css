@@ -1145,6 +1145,9 @@ footer {
     height:100%;
     width:100%;
 }
+.review-label h1{
+    font-size: 30px;
+}
 }
 
 /* Tablet - 768px to 1024px */
@@ -1172,7 +1175,7 @@ footer {
     .review-container {
         padding: 50px;
     }
-    .review-boxA h1 {
+    .review-label h1 {
         font-size: 50px;
     }
     .review-lines div {
