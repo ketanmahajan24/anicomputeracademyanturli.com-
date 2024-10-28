@@ -1083,7 +1083,7 @@ footer {
 @media (max-width: 768px) {
     
 .review-container{
-    height:800px;
+/*     height:800px; */
     height: 90%;
     display: grid;
     /* flex-wrap: wrap; */
