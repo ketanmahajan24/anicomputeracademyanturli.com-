@@ -20,7 +20,7 @@ body{
 .logo-name{
     position:fixed;
     top: 10px;
-    left: 2 px;
+    left: 2px;
     color: rgb(240, 164, 1);
     font-size: 34px;
     font-family: "Bebas Neue", sans-serif;
@@ -136,7 +136,7 @@ footer {
     color: #222222;
     font-size: 1rem;
 }
-.f-info-links a:hover {
+.privacy-terms:hover {
     text-decoration: underline;
 }
 /* Styling for the footer brand section */
@@ -195,8 +195,11 @@ footer {
 /*///////////////////////////// page-2 //////////////////////// */
 
 .gallery-page{
+    padding: 10px;
+    display: grid;
+    justify-content: center;
         margin: 10px auto;
-        height:600px;
+        /* height:600px; */
         background-color:white;
         width: 95%;
         border-radius: 30px;
@@ -214,11 +217,22 @@ footer {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: center;
+    justify-content: start;
+    align-items: flex-start;
     margin: 10px auto;
-    height:500px;
+    /* height:65rem; */
+    height:25rem;
+    /* height:auto; */
     width: 95%;
+    overflow: hidden;
     /* background-color: yellowgreen; */
+
+}
+.gallery-view-btn{
+    /* align-items: center; */
+    /* justify-content: center; */
+    margin: 5px auto;
+    width: 150px;
 
 }
 @media(orientation:portrait) {
@@ -237,9 +251,10 @@ footer {
 /*cards  */
 .card-gallery{
     border: none !important;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
     height: 12rem;
-    width: 15%;
+    width: 19%;
+    margin: 0.25rem auto;
 }
 .card-img-top{
     height: 100%;
@@ -252,7 +267,7 @@ footer {
     opacity: 0;
 }
 .card-img-overlay:hover{
-    opacity: 0.2;
+    opacity: 0.4;
     background-color: #fff;
 }
 .container{
@@ -270,49 +285,40 @@ footer {
 /* //////////////////////////////////////// */
 /* certificate */
 .certificate-div{
-    margin: 15px auto;
-    height:200px;
+    padding: 20px;
     background-color:white;
-    width: 95%;
-    border-radius:30px;
+    width: 100%;
+    /* border-radius:30px; */
 }
 .text-heading-2{
-    padding-top: 10px;
+    /* margin: 10PX; */
     text-align: center;
-    color: rgb(255, 167, 4);
-    font-size: 30px;
-    font-family:"Bebas Neue", sans-serif;
+    /* justify-content: center; */
+    color: rgb(255, 0, 0);
+    font-size: 40px;
+    font-weight: 600;
+    font-family: "Noto Serif", serif;
 }
 .certificate-img{
-    margin: 10px auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    width: 60%;
-    height:130px;
+    width: 70%;
+    height:140px;
 }
 .certificate-img img{
-     margin: 10px auto ;
+     margin: 0px auto ;
 }
 @media(orientation:portrait) {
-    
-.certificate-div{
-    margin: 5px auto;
-    height:150px;
-    background-color:white;
-    width: 95%;
-    border-radius:30px;
-}
     .text-heading-2{
-        font-size: 16px;
+        font-size: 25px;
     }
     
-.certificate-img{
+    .certificate-img{
     margin: 10px auto;
-    display: flex;
-    justify-content: center;
     width: 60%;
-    height:80px;
-}
+    height:100px;
+    }
 }
 /* certificate ended */
 
@@ -320,9 +326,10 @@ footer {
 /* <----------- PAGE-3 STARTED -----------> */
 
 #box3 {
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfKhTzKatY3UYl42YgP8pYj9XfQgMtUHKJ8w&shttps://wallpapers.com/images/high/dark-laptop-white-cordless-keyboard-fdtwdtsmuwgo6x0b.webp");
+    background-image: url("https://images.pexels.com/photos/205420/pexels-photo-205420.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     background-size: cover;
     background-position: center;
+    /* filter: blur(8px); */
     display: grid;
     padding: 20px;
 }
@@ -405,7 +412,7 @@ footer {
 .trainer-info {
     border-radius: 20px;
     position: absolute;
-    top: 175px;
+    top: 165px;
     height: 300px;
     width: 100%;
     background-color: rgba(250, 195, 2);
@@ -427,6 +434,7 @@ footer {
 .trainer-info h6 {
     color: #07090e;
     margin: 10px;
+    padding-top: 10px;
     font-size: 0.875rem;
 }
 
@@ -449,7 +457,7 @@ footer {
 
 /* Background images for trainers */
 #trainer-1 {
-    background-image: url(https://img.freepik.com/premium-vector/person-works-troubleshooting-computer-while-surrounded-by-various-tech-equipment-tools-computer-troubleshooting-illustration-customizable-flat_585735-38713.jpg);
+    background-image: url(https://images.pexels.com/photos/4065864/pexels-photo-4065864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
     background-position: center;
 }
@@ -461,13 +469,13 @@ footer {
 }
 
 #trainer-3 {
-    background-image: url(https://rksolution.co.in/wp-content/uploads/2023/03/Tally-Customization-Everything-You-Need-to-Know-750x450.png);
+    background-image: url(https://images.pexels.com/photos/7947999/pexels-photo-7947999.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load);
     background-size: cover;
     background-position: center;
 }
 
 #trainer-4 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHc5aa7ZjNWyXgvaOy7G5R0KnVDih0hp4CJwH-_PLpRTv5vPEzyqE3WHdWLWSvRmoeiaM&usqp=CAU);
+    background-image: url(https://images.pexels.com/photos/5716001/pexels-photo-5716001.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
     background-size: cover;
     background-position: center;
 }
@@ -490,6 +498,7 @@ footer {
     }
 
     .trainer-info h6 {
+        top: 150px;
         font-size: 0.75rem;
     }
 
@@ -605,7 +614,7 @@ footer {
     height: 220px;
     width: 30%;
     min-width: 280px;
-    padding: 10px;
+    padding: 2px;
     margin: 10px;
 }
 
@@ -621,17 +630,20 @@ footer {
     font-weight: 600;
     color: white;
     letter-spacing: -0.02em;
+  
+    text-align: center;
     line-height: 30px;
     font-size: 24px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .card-description {
     font-weight: 600;
     line-height: 1.4;
-    color: hsla(0, 0%, 100%, 0.5);
-    font-size: 10px;
-    margin-top: 10px;
+    color: hsla(0, 0%, 100%, 0.904);
+    font-size: 12px;
+    text-align: center;
+    margin: 5px;
 }
 
 /* Card Icon Styles */
@@ -647,6 +659,10 @@ footer {
 }
 
 .icon-inner {
+      display: flex;
+    align-items: center;
+    justify-content: center;
+
     height: 58px;
     width: 58px;
     margin: auto;
@@ -783,7 +799,7 @@ footer {
     align-items: center; /* Center vertically */
     height: 800px;
     width: 100%;
-    background-image: url("/images/bg-1.webp");
+    background-image: url("https://img.freepik.com/premium-photo/stylish-workspace-with-laptop_67155-2479.jpg?w=996");
     background-size: cover;    
     padding: 20px; /* Add some padding for smaller screens */
 }
@@ -814,16 +830,16 @@ footer {
 
 .founder-name {
     margin: 10px 0;
+    width: 100%;
     text-align: center;
     font-family: "Fira Sans Condensed", sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 400;
     color: #fff;
+    /* width: 400px; */
 }
 
 .institute-intro {
-    /* height: auto; Allow height to adjust */
-    /* width: 90%; */
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     align-items: center; /* Center items */
@@ -835,7 +851,7 @@ footer {
     font-family: "Sarabun", sans-serif;
     font-size: 50px;
     font-weight: 500;
-    color: white;
+    color: rgb(229, 255, 0);
     margin-bottom: 20px; /* Space below the heading */
 }
 
@@ -843,7 +859,7 @@ footer {
     margin: 10px; /* Adjust margin */
     height: 100%;
     width: 100%;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
 }
 
@@ -904,137 +920,133 @@ footer {
 /* ///////////////////     REVIEW-PAGE   -start     /////////////////// */
 
 .review-page-box{
-    height:600px;
+    height:500px;
     width: 100%;
     display: flex;
-    background-color: rgb(255, 166, 0);
+    background-image: url("https://img.freepik.com/premium-photo/overhead-shot-dark-modern-workspace-wit-laptop-computer-copy-space-with-office-supplies_67155-3958.jpg?w=826");
+    background-size:cover;
 }
 
 /* div=====main */
 .review-container{
-    /* height:80%; */
+    height:75%;
     width: 95%;
     margin: auto;
-    background-color:rgb(22, 21, 21);
-    border-radius: 30px;
-
+    padding: 30px;
+    background-color:rgba(22, 21, 21, 0.3);
+    border-radius: 25px;
+    border: 2px solid rgb(148, 148, 120);
+    /* align-items: center; */
     display: grid;
-    gap: 20px;
-    grid-template-columns: 35%  70%;
+    gap: 10px;
+    grid-template-columns: 30%  70%;
     grid-template-rows: 60% 40%;
 }
 /* div=====1 */
 .review-label{
     margin: 10px;
-    height:100%;
     grid-column: 1;
     grid-row: 1 / span 2;
-
     color: rgba(255, 255, 255);
-    /* background-color: red; */
 }
-/* div======2 */
+/* slider for review */
 .review-slider{ 
+    margin: 20px;
     grid-column: 2;
     grid-row: 1;
     position: relative;
     overflow: hidden;
-    height:250px;
-    /* width: 100%; */
+    height:180px;
     width: 650px;
-    /* margin: 65px 10px 65px 50px; */
-    /* background-color: yellow; */
 }
+
+.reviews{
+    display: flex;
+    margin:0 auto;
+    transition: transform 0.5s ease-in-out;
+    /* height:200px; */
+    justify-content: start;
+}
+
+.review{
+    height: 100%;
+    width: 100%;
+}
+.review-lines{
+    margin: auto 0 ;
+    display: flex;
+    height: 120px;
+    width: 650px;
+    color: rgba(255, 255, 255);
+}
+
+
+.review-lines p{
+    width: 600px;
+}
+
+
+
+
+
+
 
 /* div =====3 */
 
 .review-buttons{
-    margin-top: 50PX;
+    /* display: flex; */
+    justify-content: center;
     grid-column: 2;
     grid-row: 2;
-    height: 120px;
-    /* width: 650px; */
-    /* background-color: blue; */
-
+    /* margin: 20px; */
+    /* height: 80px; */
+    justify-content: start;
 }
 
 .review-label h6{
     font-family: "Open Sans", sans-serif;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.752);
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.897);
 }
 .review-label h1{
-    font-size: 50px;
+    font-size: 35px;
 }
 .review-buttons i {
-    margin: 40px 15px ;
+    margin: 15px ;
     transform: scale(1.8);
     color: white;
     cursor: pointer;
 }
 
-.reviews{
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height:250px;
-    width: 650px;
-    justify-content: start;
-}
 .review-boxB{
-    display:grid;
     justify-content:start;
-    height:100%;
-    width:100%;
-}
-.review-lines{
-    display: flex;
-    height: 150px;
-    width: 650px;
-    margin: 0;
+    height:120px;
 }
 .review-lines div{
     font-family: "Courgette", cursive;
-    font-weight: 400;
-    font-style: normal;
-    transform:translateY(-15px);
-    height:100px;
-    width: 40px;
+    font-weight: 200;
+    transform:translateY(-20px);
     color: rgba(255, 255, 255);
-    font-size: 100px;   
+    font-size: 60px;   
+    margin:10px ;
 }
-.review-lines p{
-    padding: 20px;
-    height: 150px;
-    color: rgba(255, 255, 255);
-}
-.review-lines input{
-    display: block;
-    margin:5px 30px ;
-    background-color:rgba(255, 255, 255, 0);
-    padding: 10px;
-    /* width: 500px; */
-    height: 150px;
-    color: rgba(255, 255, 255);
-    border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255);
-}
-.review-name{
-    margin: 0;
-    padding: 0;
-    height: 100px;
-    width: 650px;
+.review-boxB textarea, .review-username{
+    margin:10px ;
+    background-color:rgb(255, 255, 255);
+    padding: 5px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255);
 }
 .review-info{
-    display: flex;
-   
     color: azure;
 }
-.review-info h3 ,h6{
-    padding-left:10px ;
+.review-info h5 {
+    padding-left:100px ;
     margin: 10px ;
 }
 #review-submit{
-    margin: 40px;
+    /* margin: 40px; */
     border-radius: 10px;
     border: none;
     height: 40px;
@@ -1046,7 +1058,7 @@ footer {
     transition: 0.3s ease-in-out;
 }
 #review-submit2{
-    margin: 40px;
+    
     border-radius: 10px;
     border: none;
     height: 40px;
@@ -1059,17 +1071,10 @@ footer {
     transform: scale(1.3);
 }
 #review-sumbit:hover{
-    transform: scale(1.05)   ;
+    transform: scale(1.05);
     background-color: rgb(3, 194, 194);
   
 }
-.review-username{
-    margin-left: 20px;
-    border-radius: 5px;
-    padding: 2px;
-    background-color: #fffffff3;
-}
-
 
 /* ///////////////////     REVIEW-PAGE   -end    /////////////////// */ 
 
@@ -1080,102 +1085,155 @@ footer {
 
 
 /* Mobile - up to 768px */
-@media (max-width: 768px) {
+@media (orientation:portrait) {
+   
+     .review-container{
+        height:80%;
+        display: grid;
+        grid-template-columns: 95%;
+        grid-template-rows: 30% 55% 15% ;
+    }
+    .review-slider{ 
+        grid-column: 1;
+        grid-row: 2;
+        width: 300px;
+    }
+
+    .review-lines{
+        width: 300px;
+     }
+    .review-lines p{
+        width: 300px;
+        font-size: 12px;
+    }
+
+    /* div=====1 */
+    .review-label{
+        grid-column: 1;
+        grid-row: 1 ;
+       }
+    /* div======2 */
+    .review-slider{ 
+        grid-column: 1;
+        grid-row: 2;
+    }
     
-.review-container{
-    /* height:800px; */
-    height: 90%;
+    /* div =====3 */
+    .review-buttons{
+        grid-column: 1;
+        grid-row: 3;
+    }
+    
+    
+    .review-label h1{
+        font-size: 20px;
+    }
+
+    .review-lines div{
+            font-size: 40px;
+    }
+    .review-boxB{
+        /* margin: 0;
+        padding: 0;
+        display:grid;
+        justify-content:start;
+         height:100%; */
+        
+        width:300Px;
+        transform: scale(0.8);
+    }
+
+    
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Tablet - 768px to 1024px */
+    /* @media (min-width: 768px) and (max-width: 1024px) {
+        .review-container {
+            flex-direction: row;
+        }
+        .review-boxA {
+            width: 35%;
+            text-align: left;
+        }
+        .review-slider {
+            width: 60%;
+        }
+        .review-boxA h1 {
+            font-size: 35px;
+        }
+    } */
+    
+    /* Desktop - 1024px and above */
+    /* @media (min-width: 1024px) {
+        .review-page-box {
+            height: 500px;
+        }
+        .review-container {
+       
+        }
+        .review-boxA h1 {
+            font-size: 50px;
+        }
+        .review-lines div {
+       
+        }
+    }
+     */
+
+     /* Gallery Container */
+.gallery-container {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  /* Gallery Grid */
+  .gallery {
     display: grid;
-    /* flex-wrap: wrap; */
-    gap: 50px;
-    grid-template-columns: 100%;
-    grid-template-rows: 25% 25% 35% 15% ;
-}
-/* div=====1 */
-.review-label{
-    /* height:25%; */
-    grid-column: 1;
-    grid-row: 1 ;
-    /* color: rgba(255, 255, 255); */
-    /* background-color: red; */
-}
-/* div======2 */
-.review-slider{ 
-    grid-column: 1;
-    grid-row: 2;
-    position: relative;
-    /* overflow: hidden; */
-    height:250px;
-    
-    width: 400px;
-    /* margin: 65px 10px 65px 50px; */
-    /* background-color: yellow; */
-}
-
-/* div =====3 */
-
-.review-buttons{
-    grid-column: 1;
-    grid-row: 3;
-    /* height: 120px; */
-    width: 100%;
-    /* background-color: blue; */
-
-}
-
-.review-lines{
-    display: flex;
-    height: 150px;
-    /* width: 400px; */
-    width: 100%;
-    margin: 0;
-}
-
-.reviews{
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height:250px;
-    /* width: 300px; */
-    justify-content: start;
-}
-
-.review-boxB{
-    display:grid;
-    justify-content:start;
-    height:100%;
-    width:100%;
-}
-}
-
-/* Tablet - 768px to 1024px */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .review-container {
-        flex-direction: row;
-    }
-    .review-boxA {
-        width: 35%;
-        text-align: left;
-    }
-    .review-slider {
-        width: 60%;
-    }
-    .review-boxA h1 {
-        font-size: 35px;
-    }
-}
-
-/* Desktop - 1024px and above */
-@media (min-width: 1024px) {
-    .review-page-box {
-        height: 700px;
-    }
-    .review-container {
-        padding: 50px;
-    }
-    .review-boxA h1 {
-        font-size: 50px;
-    }
-    .review-lines div {
-        font-size: 80px;
-    }
-}
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Gallery Items */
+  .gallery-item {
+    background-color: #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* Hidden items */
+  .hidden {
+    display: none;
+  }
+  
+  /* "See More" Button */
+  .see-more-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .see-more-btn:hover {
+    background-color: #0056b3;
+  }
+  
