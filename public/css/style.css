@@ -1083,7 +1083,11 @@ footer {
 @media (max-width: 768px) {
     
 .review-container{
+<<<<<<< HEAD
     /* height:800px; */
+=======
+/*     height:800px; */
+>>>>>>> 39d99a2aa627b8cba736ba19cdcafb6114634bfe
     height: 90%;
     display: grid;
     /* flex-wrap: wrap; */
@@ -1145,6 +1149,9 @@ footer {
     height:100%;
     width:100%;
 }
+.review-label h1{
+    font-size: 30px;
+}
 }
 
 /* Tablet - 768px to 1024px */
@@ -1172,7 +1179,7 @@ footer {
     .review-container {
         padding: 50px;
     }
-    .review-boxA h1 {
+    .review-label h1 {
         font-size: 50px;
     }
     .review-lines div {
