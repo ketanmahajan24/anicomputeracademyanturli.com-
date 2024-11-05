@@ -1,0 +1,79 @@
+
+<% layout("/layouts/boilerplate") -%>
+
+<body>
+
+  <div class="blogs-page">
+
+<div class="container" style="padding-top: 20px;background-color: #ffffff3d;">
+    <div class="row">
+      
+        <div class="col-lg-6 col-md-6 mb-4">
+            <div class="blog-card" style="height: 300px;">
+                <img src="https://img.freepik.com/premium-photo/cute-pupils-computer-class-with-teacher_13339-103545.jpg?w=740" alt="Blog Image">
+                <span class="category-label">Activity</span>
+                <div class="content-overlay">
+                    <div class="blog-title">Behind the Screens: Class Highlights and Events</div>
+                    <div class="blog-info">by Akshay jiri &bull; Nov 15, 2022 &bull; 5 min read</div>
+                </div>
+            </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="blog-card" style="height: 300px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO9oLrfig-vnT0OqJ2Euc7oN1-tw3H_oUgjw&s" alt="Blog Image">
+                <span class="category-label" style="background-color: #ffcc00;">Motivation</span>
+                <div class="content-overlay">
+                    <div class="blog-title">Empower Yourself: Success Tips and Encouragement</div>
+                    <div class="blog-info">by Ketan Mahajan &bull; Aug 18, 2022</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="blog-card" style="height: 300px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHCl2qUckAF-8U4iHoSMoveDSSzZ-DucL2PV05ZFsxK8ZieiWeF6yvBV9qu-yud5kGvtI&usqp=CAU" alt="Blog Image">
+                <span class="category-label" style="background-color: #00ff00;">Skills</span>
+                <div class="content-overlay">
+                    <div class="blog-title">Five intermediate guides to business</div>
+                    <div class="blog-info">by Joan &bull; Jun 3, 2022</div>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+<hr>
+<!-- blogs section  -->
+<div class="container" style="background-color: #ffffff3d;">
+  
+<h1 style="text-align: center;padding: 20px; color: rgb(255, 153, 0);">Explore More</h1>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 corses-box">
+
+  <!-- <div class="card-group" style="gap: 20px;"> -->
+   
+  <!-- BLOG CARDs TAKING VALUES DYNAMICLLY FROM SCHEMA-Blog   -->
+     
+
+    <% for (let Blog of allBlogs){%>
+   
+    <div class="card course-card">
+      <img src="<%=Blog.B_image%>" class="card-img-top" style="height: 8rem;" alt="...">
+      <div class="card-body card-body-blog">
+        <h6 class="card-title " style="color: black;"><%=Blog.B_title%></h6>
+        <p class="custom-scroll card-text"><%=Blog.B_description%>.</p>
+        <p class="card-text"><small class="text-body-secondary">Last updated: <b> <%=Blog.created_at.toLocaleDateString('en-CA')%></b></small></p>
+      </div>
+    </div>
+
+  <%}%>
+  </div>
+
+</div>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>

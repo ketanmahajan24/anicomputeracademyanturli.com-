@@ -1,0 +1,66 @@
+
+<%layout("/layouts/dashboard")-%>
+   <!-- Main Content -->
+<div class="content content-box ">
+  
+     <form method="GET" action="/admin/students/new">
+        <div class="row">
+        <h1 class="col-9">Enrolled Students</h1>  
+        <button class="col-2 btn btn-primary" style="margin: auto;"><i class="fa-solid fa-user-plus"></i> Add New User</button>
+        </div>
+     </form>
+    <div class="container student-box">
+        <!-- Student info TABLE  -->
+    <table>
+        <thead>
+            <tr>
+                <th>STUDENT ID</th>
+                <th>Name</th>
+                <th>Father Name</th>
+                <th>DOB</th>
+                <th>Phone</th>
+                <th>Aadhar No.</th>
+                <th>Course </th>
+                <th>Join Date</th>
+                <th>password</th>
+                <th>View</th>
+                <th>EDIT</th>
+                <th>DELETE</th>
+            </tr>
+        </thead>
+        <tbody>
+                
+
+     <% for (let Student of allStudents){%>
+            <tr>
+                <td><%=Student.S_id%></td>
+                <td><%=Student.S_name%></td>
+                <td><%=Student.F_name%></td>
+                <td><%=Student.Dob.toLocaleDateString('en-CA')%></td>
+                <td><%=Student.Phone%></td>
+                <td><%=Student.Aadhar_no%></td>
+                <td><%=Student.Course_name%></td>
+                <td><%=Student.Join_date.toLocaleDateString('en-CA')%></td>
+                <td><%=Student.Password%></td>
+                <td>
+                    <form action="/admin/students/<%=Student._id%>/edit">
+                    <button class="btn p-0 border-0 bg-transparent"><i class="fa-regular fa-eye"></i></button>
+                    </form>
+                </td>
+                <td><a style="color:  #293042;" href="/admin/students/<%=Student._id%>/edit"><i class="fa-solid fa-pen-to-square"></i></a></td>
+                <td>
+                    <form method="POST" action="/admin/students/<%=Student._id%>?_method=DELETE">
+                        <button class="btn p-0 border-0 bg-transparent"><i class="fa-solid fa-trash-can"></i></button>
+                    </form>
+                </td>
+
+                <%}%>
+            </tr>
+        
+
+
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+            </div>
+        </div>

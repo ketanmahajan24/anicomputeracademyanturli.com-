@@ -42,21 +42,6 @@ function updateReviewPosition() {
     const offset = -currentIndex * 100;
     document.querySelector('.reviews').style.transform = `translateX(${offset}%)`;
 }
-// function seeMore() {
-//     const hiddenItems = document.querySelectorAll('.gallery-item.hidden');
-//     hiddenItems.forEach((item, index) => {
-//       if (index < 4) { // Show 4 hidden items at a time
-//         item.classList.remove('hidden');
-//       }
-//     });
-  
-//     // Hide the "See More" button if all items are visible
-//     if (document.querySelectorAll('.gallery-item.hidden').length === 0) {
-//       document.querySelector('.see-more-btn').style.display = 'none';
-//     }
-//   }
-
-
 
 //   see more button
 
@@ -85,3 +70,5 @@ function seeLess() {
      seeMorebtn.style.display="block"
 
 }
+// contact page redirect top 500px for enquiry page
+   
