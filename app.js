@@ -76,6 +76,22 @@ app.get("/student-login",(req,res)=>{
   res.render("./loginpage/student-login.ejs");
 })
 
+app.get("/privacy-policy",(req,res)=>{
+  res.render("./legal/privacy.ejs");
+})
+
+app.get("/Terms-of-Service",(req,res)=>{
+  res.render("./legal/terms.ejs");
+})
+
+app.get("/legal-certificate-india-iso",(req,res)=>{
+  res.render("./legal/iso.ejs");
+})
+
+app.get("/legal-certificate-india-msme",(req,res)=>{
+  res.render("./legal/msme.ejs");
+})
+
 // ADMIN DASHBOARD 
 
 
