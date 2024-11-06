@@ -44,11 +44,19 @@ const studentSchema = new Schema({
         required:true
     }
     ,
+    complete_date:{
+        type:Date,
+    }
+    ,
+    grade:{
+        type:String,
+    } 
+    ,
     Password:{
         type:String,
         required:true,
     } 
-
+    
 });
 
 const Student =mongoose.model("student",studentSchema);

@@ -38,7 +38,7 @@ body{
 /* navbar */
 .navbar-nav{
     background:rgba(0, 0, 0);
-    padding-left: 25%;
+    padding-left: 27%;
     display: flex;
     /* justify-content: fl; */
     justify-items: center;
@@ -139,9 +139,7 @@ body{
 }
 
 .download-btn:hover{
-    /* margin: 10px; */
-    /* color: black;/ */
-    /* font-family: "Noto Sans", sans-serif; */
+   
     border: 2px solid rgba(250, 195, 2);
 }
 
@@ -344,13 +342,17 @@ footer {
     }
 }
 
-.certificate-link{
-    color: rgb(0, 10, 44);
+
+.certificate-logos{ 
+    transition: transform 0.3s ease; /* Smooth transition */
+    cursor: pointer;
 }
-.certificate-link:hover{
-    
-    color: red;
+
+.certificate-logos:hover{
+    transition: 0.5 ease-in-out;
+  transform: scale(1.2);
 }
+
 /* certificate ended */
 
 
@@ -484,6 +486,13 @@ footer {
 .book-btn:hover {
     color: #000000;
     background-color: #ffffff;
+}
+.veiw-all-btn{
+    transition: transform 0.3s ease; /* Smooth transition */
+    cursor: pointer;
+}
+.veiw-all-btn:hover{
+    transform: scale(1.2);
 }
 
 /* Background images for trainers */
@@ -867,9 +876,7 @@ footer {
     font-size: 30px;
     font-weight: 400;
     color: #fff;
-    /* width: 400px; */
 }
-
 .institute-intro {
     display: flex;
     flex-direction: column; /* Stack elements vertically */
@@ -1187,44 +1194,6 @@ footer {
 
 
 
-
-
-
-
-
-    /* Tablet - 768px to 1024px */
-    /* @media (min-width: 768px) and (max-width: 1024px) {
-        .review-container {
-            flex-direction: row;
-        }
-        .review-boxA {
-            width: 35%;
-            text-align: left;
-        }
-        .review-slider {
-            width: 60%;
-        }
-        .review-boxA h1 {
-            font-size: 35px;
-        }
-    } */
-    
-    /* Desktop - 1024px and above */
-    /* @media (min-width: 1024px) {
-        .review-page-box {
-            height: 500px;
-        }
-        .review-container {
-       
-        }
-        .review-boxA h1 {
-            font-size: 50px;
-        }
-        .review-lines div {
-       
-        }
-    }
-     */
 
      /* Gallery Container */
 .gallery-container {
