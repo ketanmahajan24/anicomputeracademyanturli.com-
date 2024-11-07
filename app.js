@@ -23,8 +23,6 @@ const methodOverride=require("method-override");
 // stablish connectio b/w APP & MONGODB ATLAS
 
 
-
-
 app.set("view engine","ejs");
 app.set("views" ,path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
@@ -95,11 +93,47 @@ app.get("/legal-certificate-india-msme",(req,res)=>{
 
 // ADMIN DASHBOARD 
 
-app.get("/admin",(req,res)=>{
-    res.render("./admin/home-admin.ejs");
-})
 
- 
+//ADMIN LOGIN ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get("/admin-login",(req,res)=>{
+  res.render("./loginpage/admin-login.ejs");
+})
+ // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
+ app.post("/admin-access", async (req, res,next) => {
+  try {
+   let A_id= req.body.Admin_id;
+   let A_pass=req.body.Admin_password;
+    if (A_id ==="12345" && A_pass==="123"){
+      // console.log(A_id,A_pass);   
+      app.get("/admin",async(req,res)=>{
+        res.render("./admin/home-admin.ejs");
+      });
+      res.redirect("/admin");
+      next();
+    }else{
+      res.send("ENTER CORRECT ADMIN ID AND PASSWORD");
+    }
+
+ } catch (error) {
+   console.error("Error saving blog:", error);
+   // Check if the error is a MongoDB duplicate key error
+   if (error.code === 11000) {
+     // Duplicate key error (for example, unique constraint on a field like prn)
+     res.status(400).send("Error: Duplicate entry detected. Please ensure unique values for unique fields.");
+   } else if (error.name === "ValidationError") {
+     // Mongoose validation error
+     res.status(400).send("Validation Error: " + error.message);
+   } else {
+     // General server error for other unexpected issues
+     res.status(500).send("An unexpected error occurred. Please try again later.");
+   }
+ }
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// CRUD OPERATIONS
 // ADMIN - STUDENT 
 app.get("/admin/students",async(req,res)=>{
   const allStudents= await Student.find({});
