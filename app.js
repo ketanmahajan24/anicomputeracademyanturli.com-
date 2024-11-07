@@ -72,6 +72,7 @@ app.get("/aboutUs",(req,res)=>{
 app.get("/contact",(req,res)=>{
     res.render("./pages/contact.ejs");
 })
+
 app.get("/student-login",(req,res)=>{
   res.render("./loginpage/student-login.ejs");
 })
@@ -93,7 +94,6 @@ app.get("/legal-certificate-india-msme",(req,res)=>{
 })
 
 // ADMIN DASHBOARD 
-
 
 app.get("/admin",(req,res)=>{
     res.render("./admin/home-admin.ejs");
@@ -290,8 +290,7 @@ app.put("/admin/blogs/:id",async(req,res)=>{
     await Blog.findByIdAndUpdate(id,{...req.body.blog});
 
     res.redirect(`/admin/blogs`)
-})
-   
+})   
 //DELETE ROUTE (blog )
 app.delete("/admin/blogs/:id",async(req,res)=>{
     let {id}=req.params;
@@ -319,7 +318,8 @@ app.get("/admin/enquiries",async(req,res)=>{
         await newVisitor.save();
     
         // If successful, redirect to the students list page
-        res.redirect("/contact");
+        // res.redirect("/contact");
+        res.render("./pages/eform.ejs", { submitMessage: " Thank you for reaching out! Your enquiry has been successfully submitted." });
         console.log("New Enquiy added:", newVisitor);
       } catch (error) {
         // Log the error to the console for debugging
@@ -357,7 +357,6 @@ app.get("/admin/feedbacks",async(req,res)=>{
   res.render("./admin/feedback-admin.ejs",{allFeedbacks});
 });
 
-    // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
     app.post("/admin/feedbacks", async (req, res) => {
       try {
         // Create a new student with the data from the request body
@@ -367,8 +366,9 @@ app.get("/admin/feedbacks",async(req,res)=>{
         await allFeedbacks.save();
     
         // If successful, redirect to the students list page
-        res.redirect("/home");
-        console.log("New feedback added:", allFeedbacks);
+        // res.redirect("/home");
+        const allnewFeedbacks= await Feedback.find({});
+        res.render("./pages/home-copy.ejs", {allnewFeedbacks});
       } catch (error) {
         // Log the error to the console for debugging
         console.error("Error saving feedback:", error);
@@ -403,8 +403,8 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
    
 // Handle login form submission   
   // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
-  app.post("/student-certificate", async (req, res) => {
-    try {
+     app.post("/student-certificate", async (req, res) => {
+     try {
 
       let S_prn= req.body.S_id;
       let S_password=req.body.password;
@@ -415,9 +415,9 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
          if (!student) {
              // No matching student found
             
-             console.log("Invalid S_id or Password.");
+             console.log("Invalid Student PRN or Password.");
              // You can render an error page or send a response with a message
-             res.render("./loginpage/invalidStudent.ejs", { errorMessage: "Invalid S_id or Password. Please try again." });
+             res.render("./loginpage/invalidStudent.ejs", { errorMessage: "Invalid Student PRN or Password. Please try again." });
             
              //  res.status(401).send("Invalid S_id or Password. Please try again.");
          } else {
@@ -445,7 +445,7 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
         res.status(500).send("An unexpected error occurred. Please try again later.");
       }
     }
-  });
+   });
 // Route to generate PDF and trigger download
 app.post('/download-certificate', async (req, res) => {
   const { S_id } = req.body;
@@ -506,10 +506,6 @@ app.post('/download-certificate', async (req, res) => {
   }
 });
 ////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 
 app.listen(port,()=>{

@@ -345,23 +345,23 @@
   <div class="review-container">
     <div class="review-label">
       <h6>DONT' TAKE OUR WORDS</h6>
-        <h1>Listen from our <br>Haapy Students</h1>
+        <h1 style="color: #f7d202;">Thank you  <br> for your valuable feedback!</h1>
     </div>
     <div class="review-slider ">
       <div class="reviews">
       
  <!-- review page-1 -->
      
- <% for (let i = allFeedbacks.length - 1; i >= 0; i--) { %>
+ <% for (let i = allnewFeedbacks.length - 1; i >= 0; i--) { %>
 
  <div class="review" id="review-page1">
   <div class="review-lines">
     <div>``</div>
-    <p class="custom-scroll"> <%=allFeedbacks[i].fe_msg%> </p>
+    <p class="custom-scroll"> <%=allnewFeedbacks[i].fe_msg%> </p>
   </div>
   <div class="review-info">
     <div class="review-name">
-                  <h5  class="ketan"> ~ <%=allFeedbacks[i].user_name%></h5>
+                  <h5  class="ketan"> ~ <%=allnewFeedbacks[i].user_name%></h5>
     </div>
   </div>
 </div>
@@ -370,7 +370,7 @@
        <!-- review page-write -->
      <div class="review-boxB review" id="review-page6">
     
-      <form method="POST" action="/admin/feedbacks" validate>
+      <form method="POST" action="/admin/feedbacks" >
              
            <!-- <div class="review-lines"> -->
                <textarea  name="feedback[fe_msg]"cols="40" type="text" class="comment" placeholder="Write your review here..." required></textarea>
@@ -402,4 +402,13 @@
 
 
     <script src="/js/script.js"></script>
-</body>
+</body>    <script>
+  window.onload = function() {
+      // Get the height of the document body and scroll to 300px from the bottom
+      const offset = 300; // Adjust the offset if necessary
+      const scrollToPosition = document.body.scrollHeight - offset;
+      
+      // Scroll to the calculated position (300px from the bottom)
+      window.scrollTo(0, scrollToPosition);
+  };
+</script>

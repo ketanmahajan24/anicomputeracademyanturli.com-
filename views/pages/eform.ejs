@@ -51,8 +51,10 @@
       
         <!--CONTACT INFO - FORMS   -->
 
-        <div class="contact-info " style="background-color: rgb(255, 174, 0) ;">
-            <h1>Enquiry Now !</h1>
+        <div class="contact-info " style="background-color: rgb(16, 197, 0) ;">
+            <% if (submitMessage) { %>
+                <h1 style="color: rgb(0, 0, 0);"><%=submitMessage%></h1>
+            <% } %>
             <hr>
             <form method="POST" action="/admin/enquiries"  class="row g-3 needs-validation">
                 <div class="col-md-6">
@@ -65,7 +67,7 @@
                 
                 <div class="col-md-6">
                     <label for="validationCustom05" class="form-label">Mobile </label>
-                    <input name="visitor[E_mobile]" type="text" class="form-control" id="validationCustom05" placeholder="Enter Your Mobile"  required>
+                    <input name="visitor[E_mobile]" type="text" class="form-control" id="validationCustom05" placeholder="Enter Your Mobile" required>
                     <div class="invalid-feedback">
                       Please provide a valid Mobile.
                     </div>
@@ -74,14 +76,14 @@
                 
                 <div class="col-md-12">
                   <label for="validationCustom03" class="form-label">Message</label>
-                  <textarea style="height: 100px;" name="visitor[E_msg]"  type="text" class="form-control" id="validationCustom03"  placeholder="Type your enquiry here..." ></textarea>
+                  <textarea style="height: 100px;" name="visitor[E_msg]"  type="text" class="form-control" id="validationCustom03" placeholder="Type your enquiry here..." ></textarea>
                   <div class="invalid-feedback">
                     Please provide a valid city.
                   </div>
                 </div>
                 
                 <div class="col-12" style="display: flex;">
-                  <button class="btn w-30" style="margin: auto;color: azure; background-color: rgb(0, 0, 0);" type="submit">Submit Enquiry <i class="fa-solid fa-paper-plane"></i> </button>
+                  <button class="btn w-30" style="margin: auto;color: azure; background-color: rgb(0, 0, 0);" type="submit">Submit Enquiry <i class="fa-solid fa-paper-plane"></i></button>
 
                 </div>
               </form>

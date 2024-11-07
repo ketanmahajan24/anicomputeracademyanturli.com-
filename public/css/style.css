@@ -295,7 +295,7 @@ footer {
     opacity: 0;
 }
 .card-img-overlay:hover{
-    opacity: 0.2;
+    opacity: 0.3;
     background-color: #fff;
 }
 .container{
@@ -1032,12 +1032,10 @@ footer {
 /* div =====3 */
 
 .review-buttons{
-    /* display: flex; */
+   
     justify-content: center;
     grid-column: 2;
     grid-row: 2;
-    /* margin: 20px; */
-    /* height: 80px; */
     justify-content: start;
 }
 
@@ -1236,4 +1234,11 @@ footer {
   .see-more-btn:hover {
     background-color: #0056b3;
   }
-  
+  .Certificate-logos{
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+
+  }
+  .Certificate-logos:hover{
+   cursor: pointer;
+    transform: scale(1.3);
+  }

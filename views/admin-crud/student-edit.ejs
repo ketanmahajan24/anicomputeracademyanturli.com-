@@ -26,6 +26,7 @@
                     Looks good!
                   </div>
                 </div>
+
                 <div class="col-md-4">
                   <label for="validationCustom02" class="form-label">Father Name</label>
                   <input type="text" name="student[F_name]"class="form-control" id="validationCustom02" value="<%=student.F_name%>"  required>
@@ -33,12 +34,10 @@
                     Looks good!
                   </div>
                 </div>
-                
-                
 
                 <div class="col-md-4">
                   <label for="validationCustom05" class="form-label"> Edit Mobile No. </label>
-                  <input type="tel" name="student[Phone]" class="form-control" id="validationCustom05" maxlength="10"  value="<%=student.Phone%>" required>
+                  <input type="number" name="student[Phone]" class="form-control" id="validationCustom05" maxlength="10"  value="<%=student.Phone%>"  oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)"  placeholder="Enter 10 Digits Mobile NO."  required>
                   <div class="invalid-feedback">
                     Please provide a valid Mobile No.
                   </div>
@@ -46,7 +45,7 @@
                   
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label"> Edit Adhar Card No. </label>
-                    <input type="tel"  pattern="\d{12}" maxlength="12" name="student[Aadhar_no]" class="form-control" id="validationCustom05"  value="<%=student.Aadhar_no%>" required>
+                    <input type="number"  pattern="\d{12}" maxlength="12" name="student[Aadhar_no]" class="form-control" id="validationCustom05"  value="<%=student.Aadhar_no%>"  oninput="if(this.value.length > 12) this.value = this.value.slice(0, 12)" placeholder="Enter 12 Digits Aadhar NO." required>
                     <div class="invalid-feedback">
                       Please provide a valid Adhar Number.
                     </div>
@@ -82,7 +81,7 @@
                    
                 <div class="col-md-4">
                   <label for="validationCustom05" class="form-label">Date Of Course Completation</label>
-                  <input type="date" name="student[complete_date]" class="form-control" id="validationCustom05"  required>
+                  <input type="date" name="student[complete_date]" class="form-control" id="validationCustom05" value="<%=student.complete_date.toLocaleDateString('en-CA')%>%>" required>
                   <div class="invalid-feedback">
                     Please provide a valid DOB.
                   </div>
@@ -90,7 +89,7 @@
                 
                 <div class="col-md-4">
                   <label for="validationCustom05" class="form-label"> Grade </label>
-                  <input type="text" name="student[grade]" class="form-control" id="validationCustom05" value="<%=student.grade%>"required>
+                  <input type="text" name="student[grade]" class="form-control" id="validationCustom05" value="<%=student.grade%>" >
                   <div class="invalid-feedback">
                     Please provide a valid Mobile.
                   </div>

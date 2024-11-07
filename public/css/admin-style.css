@@ -105,3 +105,14 @@ tr:hover {
     background-color: #ddd;
 }
 
+   /* Hide arrows in Chrome, Safari, Edge, and Opera */
+   #validationCustom05::-webkit-outer-spin-button,
+   #validationCustom05::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+   }
+
+   /* Hide arrows in Firefox */
+   #validationCustom05[type="number"] {
+      -moz-appearance: textfield;
+   }
