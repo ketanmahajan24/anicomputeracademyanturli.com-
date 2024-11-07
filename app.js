@@ -372,7 +372,6 @@ app.get("/admin/feedbacks",async(req,res)=>{
       } catch (error) {
         // Log the error to the console for debugging
         console.error("Error saving feedback:", error);
-    
         // Check if the error is a MongoDB duplicate key error
         if (error.code === 11000) {
           // Duplicate key error (for example, unique constraint on a field like prn)

@@ -86,8 +86,8 @@
     <h3 id="father-name" class="student-details"><%=student.F_name %></h3>
     <h3 id="course-name" class="student-details"><%=student.Course_name%></h3>
     <h3 id="join-date" class="student-details"><%=student.Join_date.toLocaleDateString('en-GB')%></h3>
-    <h3 id="comp-date" class="student-details"><%=student.complete_date.toLocaleDateString('en-GB')%></h3>
-    <h3 id="grade" class="student-details"><%=student.grade%></h3>
+    <h3 id="comp-date" class="student-details"><%= student.complete_date ? student.complete_date.toLocaleDateString('en-GB') : 'UN COMPLETED' %></h3>
+    <h3 id="grade" class="student-details"><%= student.grade ? student.grade : 'COURSE NOT COMPLETED' %></h3>
     <!-- <img src="/images/CompleteCertificate.jpg" alt="Student Certificate Image"> -->
 </div>
 </div>
