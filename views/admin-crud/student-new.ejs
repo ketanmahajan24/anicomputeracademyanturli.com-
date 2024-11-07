@@ -59,7 +59,7 @@
                   
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label"> Date Of Birth </label>
-                    <input type="date" name="student[Dob]" class="form-control" id="validationCustom05" required>
+                    <input type="date" name="student[Dob]"  class="form-control" id="validationCusto1" required>
                     <div class="invalid-feedback">
                       Please provide a valid DOB.
                     </div>
@@ -75,7 +75,7 @@
                      
                 <div class="col-md-4">
                     <label for="validationCustom05" class="form-label">Date Of Join</label>
-                    <input type="date" name="student[Join_date]" class="form-control" id="validationCustom05" required>
+                    <input type="date" name="student[Join_date]" class="form-control" id="validationCusto2" required>
                     <div class="invalid-feedback">
                       Please provide a valid DOJ.
                     </div>
@@ -94,14 +94,22 @@
 
                 </div>
               </form>
+              
         </div>
     </div>
   </div>
+</div>
 
 
 
-    </div>
+<script>
+  // Get today's date
+  const today = new Date().toISOString().split('T')[0]; // Formats the date as YYYY-MM-DD
+  
+  // Set the max attribute of the date input to today's date  --future date not allowed
+  document.getElementById('validationCusto1').setAttribute('max', today);
 
-
-
-
+  // Set the max attribute of the date input to today's date  --future date not allowed
+  document.getElementById('validationCusto2').setAttribute('max', today);
+</script>
+    

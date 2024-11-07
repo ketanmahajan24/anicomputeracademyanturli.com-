@@ -67,7 +67,7 @@
                 
                 <div class="col-md-6">
                     <label for="validationCustom05" class="form-label">Mobile </label>
-                    <input name="visitor[E_mobile]" type="text" class="form-control" id="validationCustom05" placeholder="Enter Your Mobile" required>
+                    <input name="visitor[E_mobile]" type="text" class="form-control" maxlength="10" oninput="if(this.value.length > 10) this.value = this.value.slice(0, 10)"  id="validationCustom05" placeholder="Enter Your Mobile" required>
                     <div class="invalid-feedback">
                       Please provide a valid Mobile.
                     </div>
