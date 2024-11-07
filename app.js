@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 //mrthodOverrde  require and use
 app.use(methodOverride("_method"));
 
-// 
+
 main()
 .then(()=>{
     console.log("connect to DB ");
@@ -107,8 +107,9 @@ app.get("/admin/students",async(req,res)=>{
 });
 
 // STUDENT-->  ADD NEW STUDENT (BUTTON)
-    app.get("/admin/students/new",(req,res)=>{
-        res.render("./admin-crud/student-new.ejs");
+    app.get("/admin/students/new",async(req,res)=>{
+      const allCourses= await Course.find({});
+        res.render("./admin-crud/student-new.ejs",{allCourses});
     })
 
     // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
@@ -117,9 +118,10 @@ app.get("/admin/students",async(req,res)=>{
           // Create a new student with the data from the request body
           const newStudent = new Student(req.body.student);
           
+          
           // Attempt to save the student to the database
           await newStudent.save();
-      
+          
           // If successful, redirect to the students list page
           res.redirect("/admin/students");
           console.log("New student added:", newStudent);
@@ -146,7 +148,8 @@ app.get("/admin/students",async(req,res)=>{
 app.get("/admin/students/:id/edit",async (req,res)=>{
     let {id}=req.params;
     const student = await Student.findById(id);
-    res.render("./admin-crud/student-edit.ejs",{student});
+    const allCourses= await Course.find({});
+    res.render("./admin-crud/student-edit.ejs",{student,allCourses});
 });
 //UPDATE ROUTE
 app.put("/admin/students/:id",async(req,res)=>{
@@ -210,7 +213,7 @@ app.get("/admin/courses",async(req,res)=>{
 app.get("/admin/courses/:id/edit",async (req,res)=>{
     let {id}=req.params;
     const course= await Course.findById(id);
-    res.render("./admin-crud/course-edit.ejs",{course});
+    res.render("./admin-crud/course-edit.ejs",{course });
 });
 //UPDATE ROUTE
 app.put("/admin/courses/:id",async(req,res)=>{
