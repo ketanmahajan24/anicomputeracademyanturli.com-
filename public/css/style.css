@@ -71,6 +71,10 @@ body{
     /* background:rgba(0, 0, 0); */
     padding: 0px;
 }
+
+.nav-btn span{
+   display: none;
+}
 }
 .color-navbar-1{
     overflow: hidden;
