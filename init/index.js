@@ -1,7 +1,6 @@
 const mongoose=require("mongoose");
 const initData = require("./data.js");
-const Student = require("../models/student.js")
-
+const Admin = require("../models/admin.js");
 
 const MONGO_URL="mongodb+srv://ketan24:eFHU4GMHgOBy0Ilc@cluster0.h0ip0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
@@ -18,9 +17,11 @@ async function main(){
 
 
 const initDB= async()=>{
-    await Student.deleteMany({});
-    await Student.insertMany(initData.data);
+   
+    await Admin.insertMany(initData.data);
     console.log("data was initialized");
+    console.log(Admin);
+    
 }
 
 initDB();   

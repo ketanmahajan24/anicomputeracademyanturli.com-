@@ -1,47 +1,46 @@
 require('dotenv').config()//env variable
+
 const express=require("express");
 const app = express();
+
 const mongoose=require("mongoose"); //require mongoDB
+const connectDB = require("./config/db.js");
+connectDB();
+require('dotenv').config();
 const path = require("path");
+
+let port=process.env.PORT;
+
+const bodyParser = require("body-parser");
+
 const ejsMate=require("ejs-mate");//require ejs-Mate for boilerplate
 const puppeteer = require('puppeteer');//PDF GENERETOR(CERTIFICATE)
 
-
 // SCHEMA CONNECTIN $ REQUIRE 
+
+const adminRoutes = require("./routes/adminRoutes.js");
 const Student= require ("./models/student");//STUDENT SCHEMA
 const Course= require ("./models/course.js");//COURSES SCHEMA
 const Blog= require ("./models/blog.js");//BLOG SCHEMA
 const Visitor= require ("./models/enquiry.js");//VISITOR SCHEMA
 const Feedback = require ("./models/feedback.js");//FEEDBACK SCHEMA
 
-require('dotenv').config()
 
-dbpath=process.env.MONGO_URL;
-let port=process.env.PORT;
 
 const methodOverride=require("method-override");
 // stablish connectio b/w APP & MONGODB ATLAS
-
 
 app.set("view engine","ejs");
 app.set("views" ,path.join(__dirname,"views"));
 app.use(express.static(path.join(__dirname,"public")));
 app.engine("ejs",ejsMate);
 app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+// app.use(bodyParser.json()); // for parsing application/json
+
+
 //mrthodOverrde  require and use
 app.use(methodOverride("_method"));
-
-
-main()
-.then(()=>{
-    console.log("connect to DB ");
-})
-.catch((err)=>{
-    console.log(err);
-})
-async function main(){
-    await mongoose.connect(dbpath);
-}
 
 app.get("/",async(req,res)=>{
   const allFeedbacks= await Feedback.find({});
@@ -95,56 +94,35 @@ app.get("/legal-certificate-india-msme",(req,res)=>{
 
 
 //ADMIN LOGIN ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get("/admin-login",(req,res)=>{
+
+
+// Admin routes
+app.use("/admin", adminRoutes);
+
+// Serve the login form
+app.get("/login-akshay-punatkar-anturli-ani",(req,res)=>{
   res.render("./loginpage/admin-login.ejs");
 })
- // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
- app.post("/admin-access", async (req, res,next) => {
-  try {
-   let A_id= req.body.Admin_id;
-   let A_pass=req.body.Admin_password;
-    if (A_id ==="12345" && A_pass==="123"){
-      // console.log(A_id,A_pass);   
-      app.get("/admin",async(req,res)=>{
-        res.render("./admin/home-admin.ejs");
-      });
-      res.redirect("/admin");
-      next();
-    }else{
-      res.send("ENTER CORRECT ADMIN ID AND PASSWORD");
-    }
 
- } catch (error) {
-   console.error("Error saving blog:", error);
-   // Check if the error is a MongoDB duplicate key error
-   if (error.code === 11000) {
-     // Duplicate key error (for example, unique constraint on a field like prn)
-     res.status(400).send("Error: Duplicate entry detected. Please ensure unique values for unique fields.");
-   } else if (error.name === "ValidationError") {
-     // Mongoose validation error
-     res.status(400).send("Validation Error: " + error.message);
-   } else {
-     // General server error for other unexpected issues
-     res.status(500).send("An unexpected error occurred. Please try again later.");
-   }
- }
-});
 
+// Admin routes
+app.use("/admin", adminRoutes);
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // CRUD OPERATIONS
-// ADMIN - STUDENT 
-app.get("/admin/students",async(req,res)=>{
-  const allStudents= await Student.find({});
-  res.render("./admin/students.ejs",{allStudents});
-});
+
+// // ADMIN - STUDENT 
+// app.get("/admin/students",async(req,res)=>{
+//   const allStudents= await Student.find({});
+//   res.render("./admin/students.ejs",{allStudents});
+// });
 
 // STUDENT-->  ADD NEW STUDENT (BUTTON)
-    app.get("/admin/students/new",async(req,res)=>{
-      const allCourses= await Course.find({});
-        res.render("./admin-crud/student-new.ejs",{allCourses});
-    })
+    // app.get("/admin/students/new",async(req,res)=>{
+    //   const allCourses= await Course.find({});
+    //     res.render("./admin-crud/student-new.ejs",{allCourses});
+    // })
 
     // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
     app.post("/admin/students", async (req, res) => {
@@ -179,12 +157,12 @@ app.get("/admin/students",async(req,res)=>{
 
 
 //Edit Route  
-app.get("/admin/students/:id/edit",async (req,res)=>{
-    let {id}=req.params;
-    const student = await Student.findById(id);
-    const allCourses= await Course.find({});
-    res.render("./admin-crud/student-edit.ejs",{student,allCourses});
-});
+// app.get("/admin/students/:id/edit",async (req,res)=>{
+//     let {id}=req.params;
+//     const student = await Student.findById(id);
+//     const allCourses= await Course.find({});
+//     res.render("./admin-crud/student-edit.ejs",{student,allCourses});
+// });
 //UPDATE ROUTE
 app.put("/admin/students/:id",async(req,res)=>{
     let {id}=req.params;
@@ -205,14 +183,16 @@ app.delete("/admin/students/:id",async(req,res)=>{
 // Courses Section
 
 // ADMIN - COURSES 
-app.get("/admin/courses",async(req,res)=>{
-    const allCourses= await Course.find({});
-    res.render("./admin/courses-admin.ejs",{allCourses});
-});
+// app.get("/admin/courses",async(req,res)=>{
+//     const allCourses= await Course.find({});
+//     res.render("./admin/courses-admin.ejs",{allCourses});
+// });
+
+
  // COURSE-->  ADD NEW BLOG (BUTTON)
- app.get("/admin/courses/new",(req,res)=>{
-    res.render("./admin-crud/course-new.ejs");
-})
+//  app.get("/admin/courses/new",(req,res)=>{
+//     res.render("./admin-crud/course-new.ejs");
+// })
 // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
     app.post("/admin/courses", async (req, res) => {
         try {
@@ -244,11 +224,13 @@ app.get("/admin/courses",async(req,res)=>{
       });
 
 //Edit Route
-app.get("/admin/courses/:id/edit",async (req,res)=>{
-    let {id}=req.params;
-    const course= await Course.findById(id);
-    res.render("./admin-crud/course-edit.ejs",{course });
-});
+// app.get("/admin/courses/:id/edit",async (req,res)=>{
+//     let {id}=req.params;
+//     const course= await Course.findById(id);
+//     res.render("./admin-crud/course-edit.ejs",{course });
+// });
+
+
 //UPDATE ROUTE
 app.put("/admin/courses/:id",async(req,res)=>{
     let {id}=req.params;
@@ -274,15 +256,15 @@ app.delete("/admin/courses/:id",async(req,res)=>{
 // BLOG SECTION
 
 // ADMIN - BLOG
-app.get("/admin/blogs",async(req,res)=>{
-    const allBlogs= await Blog.find({});
-    res.render("./admin/blogs-admin.ejs",{allBlogs});
-})
+// app.get("/admin/blogs",async(req,res)=>{
+//     const allBlogs= await Blog.find({});
+//     res.render("./admin/blogs-admin.ejs",{allBlogs});
+// })
 
  // BLOG-->  ADD NEW BLOG (BUTTON)
-app.get("/admin/blogs/new",(req,res)=>{
-    res.render("./admin-crud/blog-new.ejs");
-})
+// app.get("/admin/blogs/new",(req,res)=>{
+//     res.render("./admin-crud/blog-new.ejs");
+// })
 
     // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
     app.post("/admin/blogs", async (req, res) => {
@@ -316,11 +298,11 @@ app.get("/admin/blogs/new",(req,res)=>{
 
 
 //Edit Route
-app.get("/admin/blogs/:id/edit",async (req,res)=>{
-    let {id}=req.params;
-    const blog = await Blog.findById(id);
-    res.render("./admin-crud/blog-edit.ejs",{blog});
-});
+// app.get("/admin/blogs/:id/edit",async (req,res)=>{
+//     let {id}=req.params;
+//     const blog = await Blog.findById(id);
+//     res.render("./admin-crud/blog-edit.ejs",{blog});
+// });
 //UPDATE ROUTE
 app.put("/admin/blogs/:id",async(req,res)=>{
     let {id}=req.params;
@@ -328,7 +310,7 @@ app.put("/admin/blogs/:id",async(req,res)=>{
 
     res.redirect(`/admin/blogs`)
 })   
-//DELETE ROUTE (blog )
+//DELETE ROUTE (blog)
 app.delete("/admin/blogs/:id",async(req,res)=>{
     let {id}=req.params;
     let deletedBlog= await Blog.findByIdAndDelete(id);
@@ -339,10 +321,10 @@ app.delete("/admin/blogs/:id",async(req,res)=>{
 /////////////////////////////////////////////////////////////////////
 
 // ADMIN - ENQUIRY
-app.get("/admin/enquiries",async(req,res)=>{
-  const allVisitors= await Visitor.find({});
-  res.render("./admin/enquiry-admin.ejs",{allVisitors});
-});
+// app.get("/admin/enquiries",async(req,res)=>{
+//   const allVisitors= await Visitor.find({});
+//   res.render("./admin/enquiry-admin.ejs",{allVisitors});
+// });
 
 
     // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
@@ -389,10 +371,10 @@ app.delete("/admin/enquiries/:id",async(req,res)=>{
 
 
 // ADMIN - FEEDBACK  
-app.get("/admin/feedbacks",async(req,res)=>{ 
-  const allFeedbacks= await Feedback.find({});
-  res.render("./admin/feedback-admin.ejs",{allFeedbacks});
-});
+// app.get("/admin/feedbacks",async(req,res)=>{ 
+//   const allFeedbacks= await Feedback.find({});
+//   res.render("./admin/feedback-admin.ejs",{allFeedbacks});
+// });
 
     app.post("/admin/feedbacks", async (req, res) => {
       try {
@@ -441,7 +423,6 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
   // Taking input values from student-new.ejs // route ->{"/admin/students/new"}
      app.post("/student-certificate", async (req, res) => {
      try {
-
       let S_prn= req.body.S_id;
       let S_password=req.body.password;
      console.log(S_prn,S_password);

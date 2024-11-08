@@ -1,14 +1,14 @@
 
-<% layout("/layouts/boilerplate") -%>
+<!-- <% layout("/layouts/boilerplate") -%> -->
 <div class="review-page-box" >
         <!--STUDENT LOGIN- FORMS   -->
         <div class="contact-info " style="width: 60%; background-color: rgb(0, 89, 253); margin: auto;">
             <h1>Login as Admin !</h1>
             <hr>
-            <form method="POST" action="/admin-access"  class="row g-3 needs-validation">
+            <form action="/admin/login" method="POST" class="row g-3 needs-validation">
                 <div class="col-md-6">
                   <label for="validationCustom01" class="form-label">Admin ID </label>
-                  <input name="Admin_id" type="text" class="form-control" id="validationCustom01" maxlength="10" placeholder="Enter Your Admin ID " required>
+                  <input name="username" type="text" class="form-control" id="username" maxlength="10" placeholder="Enter Your Admin ID" required>
                   <div class="valid-feedback">
                     Looks good!
                   </div>
@@ -16,7 +16,7 @@
                 
                 <div class="col-md-6">
                     <label for="validationCustom05" class="form-label"> Password </label>
-                    <input name="Admin_password" type="password" class="form-control" id="validationCustom05" placeholder="Enter Your Password"maxlength="8"  required>
+                    <input name="password" type="password" class="form-control" id="password" placeholder="Enter Your Password"maxlength="12"  required>
                     <div class="invalid-feedback">
                       Please provide a valid Password.
                     </div>
@@ -24,7 +24,6 @@
 
                 <div class="col-12" style="display: flex;">
                   <button class="btn w-30" style="margin: auto;color: rgb(255, 255, 255); background-color: rgb(0, 11, 43);" type="submit"> <b>Login</b>  </button>
-
                 </div>
               </form>
         </div>
