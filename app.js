@@ -36,7 +36,7 @@ app.use(express.static(path.join(__dirname,"public")));
 app.engine("ejs",ejsMate);
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-// app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.json()); // for parsing application/json
 
 
 //mrthodOverrde  require and use
@@ -97,10 +97,11 @@ app.get("/legal-certificate-india-msme",(req,res)=>{
 
 
 // Admin routes
+
 app.use("/admin", adminRoutes);
 
 // Serve the login form
-app.get("/login-akshay-punatkar-anturli-ani",(req,res)=>{
+app.get("/admin-login",(req,res)=>{
   res.render("./loginpage/admin-login.ejs");
 })
 
@@ -157,12 +158,12 @@ app.use("/admin", adminRoutes);
 
 
 //Edit Route  
-// app.get("/admin/students/:id/edit",async (req,res)=>{
-//     let {id}=req.params;
-//     const student = await Student.findById(id);
-//     const allCourses= await Course.find({});
-//     res.render("./admin-crud/student-edit.ejs",{student,allCourses});
-// });
+app.get("/admin/students/:id/edit",async (req,res)=>{
+    let {id}=req.params;
+    const student = await Student.findById(id);
+    const allCourses= await Course.find({});
+    res.render("./admin-crud/student-edit.ejs",{student,allCourses});
+});
 //UPDATE ROUTE
 app.put("/admin/students/:id",async(req,res)=>{
     let {id}=req.params;
@@ -175,7 +176,7 @@ app.put("/admin/students/:id",async(req,res)=>{
 app.delete("/admin/students/:id",async(req,res)=>{
     let {id}=req.params;
     let deletedStudent= await Student.findByIdAndDelete(id);
-    console.log(deletedStudent);
+    // console.log(deletedStudent);
     res.redirect("/admin/students");
 })
 
@@ -204,7 +205,7 @@ app.delete("/admin/students/:id",async(req,res)=>{
       
           // If successful, redirect to the students list page
           res.redirect("/admin/courses");
-          console.log("New course added:", newCourse);
+          // console.log("New course added:", newCourse);
         } catch (error) {
           // Log the error to the console for debugging
           console.error("Error saving blog:", error);
@@ -224,11 +225,11 @@ app.delete("/admin/students/:id",async(req,res)=>{
       });
 
 //Edit Route
-// app.get("/admin/courses/:id/edit",async (req,res)=>{
-//     let {id}=req.params;
-//     const course= await Course.findById(id);
-//     res.render("./admin-crud/course-edit.ejs",{course });
-// });
+app.get("/admin/courses/:id/edit",async (req,res)=>{
+    let {id}=req.params;
+    const course= await Course.findById(id);
+    res.render("./admin-crud/course-edit.ejs",{course });
+});
 
 
 //UPDATE ROUTE
@@ -242,7 +243,7 @@ app.put("/admin/courses/:id",async(req,res)=>{
 app.delete("/admin/courses/:id",async(req,res)=>{
     let {id}=req.params;
     let deletedCourse= await Course.findByIdAndDelete(id);
-    console.log(deletedCourse);
+    // console.log(deletedCourse);
     res.redirect("/admin/courses");
 })
 
@@ -277,7 +278,7 @@ app.delete("/admin/courses/:id",async(req,res)=>{
       
           // If successful, redirect to the students list page
           res.redirect("/admin/blogs");
-          console.log("New blog added:", newBLog);
+          // console.log("New blog added:", newBLog);
         } catch (error) {
           // Log the error to the console for debugging
           console.error("Error saving blog:", error);
@@ -298,11 +299,11 @@ app.delete("/admin/courses/:id",async(req,res)=>{
 
 
 //Edit Route
-// app.get("/admin/blogs/:id/edit",async (req,res)=>{
-//     let {id}=req.params;
-//     const blog = await Blog.findById(id);
-//     res.render("./admin-crud/blog-edit.ejs",{blog});
-// });
+app.get("/admin/blogs/:id/edit",async (req,res)=>{
+    let {id}=req.params;
+    const blog = await Blog.findById(id);
+    res.render("./admin-crud/blog-edit.ejs",{blog});
+});
 //UPDATE ROUTE
 app.put("/admin/blogs/:id",async(req,res)=>{
     let {id}=req.params;
@@ -314,7 +315,7 @@ app.put("/admin/blogs/:id",async(req,res)=>{
 app.delete("/admin/blogs/:id",async(req,res)=>{
     let {id}=req.params;
     let deletedBlog= await Blog.findByIdAndDelete(id);
-    console.log(deletedBlog);
+    // console.log(deletedBlog);
     res.redirect("/admin/blogs");
 })
 
@@ -339,7 +340,7 @@ app.delete("/admin/blogs/:id",async(req,res)=>{
         // If successful, redirect to the students list page
         // res.redirect("/contact");
         res.render("./pages/eform.ejs", { submitMessage: " Thank you for reaching out! Your enquiry has been successfully submitted." });
-        console.log("New Enquiy added:", newVisitor);
+        // console.log("New Enquiy added:", newVisitor);
       } catch (error) {
         // Log the error to the console for debugging
         console.error("Error saving blog:", error);
@@ -363,7 +364,7 @@ app.delete("/admin/blogs/:id",async(req,res)=>{
 app.delete("/admin/enquiries/:id",async(req,res)=>{
   let {id}=req.params;
   let deletedVisitor= await Visitor.findByIdAndDelete(id);
-  console.log(deletedVisitor);
+  // console.log(deletedVisitor);
   res.redirect("/admin/enquiries");
 })
 
@@ -410,7 +411,7 @@ app.delete("/admin/enquiries/:id",async(req,res)=>{
 app.delete("/admin/feedbacks/:id",async(req,res)=>{
   let {id}=req.params;
   let deletedFeedback= await Feedback.findByIdAndDelete(id);
-  console.log(deletedFeedback);
+  // console.log(deletedFeedback);
   res.redirect("/admin/feedbacks");
 })
 
@@ -431,17 +432,16 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
      .then(student => {
          if (!student) {
              // No matching student found
-            
-             console.log("Invalid Student PRN or Password.");
+            //  console.log("Invalid Student PRN or Password.");
              // You can render an error page or send a response with a message
-             res.render("./loginpage/invalidStudent.ejs", { errorMessage: "Invalid Student PRN or Password. Please try again." });
+             res.render("./loginpage/invalid-Student.ejs", { errorMessage: "Invalid Student PRN or Password Please try again " });
             
              //  res.status(401).send("Invalid S_id or Password. Please try again.");
          } else {
              // Student found, proceed with the logic
-             console.log("Student found:", student);
+            //  console.log("Student found:", student);
              // Render the student dashboard or desired page
-             res.render("./certificate/certificate.ejs", { student});
+             res.render("./certificate/certificate.ejs", {student});
          }
      })
    
@@ -525,10 +525,57 @@ app.post('/download-certificate', async (req, res) => {
 ////////////////////////////////////////////////////////////////////////////////////
 
 
-app.listen(port,()=>{
-    console.log(`server is listings on port ${port}`);
+
+// ////////////////////////////
+
+// Route to handle search by PRN
+app.post("/students/search", async (req, res) => {
+  try {
+  let S_prn =req.body.S_id;
+  //  console.log(S_prn);
+
+   Student.findOne({S_id: S_prn})
+   .then(student => {
+    console.log(student);
+       if (!student) {
+           // No matching student found
+          //  console.log("Invalid Student PRN or Password.");
+           // You can render an error page or send a response with a message
+           res.render("./admin/student-not-found.ejs", { errorMessage: " STUDENT NOT FOUND !" });
+          // res.send("students not found")
+          
+           //  res.status(401).send("Invalid S_id or Password. Please try again.");
+       } else {
+           // Student found, proceed with the logic
+          //  console.log("Student found:", student);
+           // Render the student dashboard or desired page
+           res.render("./admin/student-search.ejs", { student});
+       }
+   })
+ 
+
+  } catch (error) {
+  
+    console.error("Error saving blog:", error);
+
+    // Check if the error is a MongoDB duplicate key error
+    if (error.code === 11000) {
+      // Duplicate key error (for example, unique constraint on a field like prn)
+      res.status(400).send("Error: Duplicate entry detected. Please ensure unique values for unique fields.");
+    } else if (error.name === "ValidationError") {
+      // Mongoose validation error
+      res.status(400).send("Validation Error: " + error.message);
+    } else {
+      // General server error for other unexpected issues
+      res.status(500).send("An unexpected error occurred. Please try again later.");
+    }
+  }
+ });
+
+
+
+
+ app.listen(port,()=>{
+  console.log(`server is listings on port ${port}`);
 
 })
-
-
-
