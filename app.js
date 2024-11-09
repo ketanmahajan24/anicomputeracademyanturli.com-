@@ -101,7 +101,7 @@ app.get("/legal-certificate-india-msme",(req,res)=>{
 app.use("/admin", adminRoutes);
 
 // Serve the login form
-app.get("/admin-login",(req,res)=>{
+app.get("/ani-anturli-admin-login",(req,res)=>{
   res.render("./loginpage/admin-login.ejs");
 })
 
