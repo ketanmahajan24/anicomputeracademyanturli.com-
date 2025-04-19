@@ -20,7 +20,7 @@
         }
         #certificate {
             width: 1300px;
-            height: 850px;
+            /* height: 850px; */
             margin: auto;
             text-align: center;
             border: 1px solid #ccc;
@@ -72,7 +72,7 @@
 </head>
 <body>
     <h1>Congratulations <%= student.S_name %>!</h1>
-    <p>Your certificate is ready for download 1 !</p>
+    <p>Your certificate is ready for download now !</p>
     <div id="certificate">
         <div class="certificate-img">
             <h3 id="student-prn"><%= student.S_id %></h3>
@@ -89,26 +89,30 @@
     <!-- Scripts for html2canvas and jsPDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
     <script>
         async function downloadPDF() {
             const { jsPDF } = window.jspdf;
-
-            // Select the element to convert to PDF
-            const certificateDiv = document.getElementById("certificate");
-
-            // Use html2canvas to capture the element as an image
-            const canvas = await html2canvas(certificateDiv, { scale: 2 });
+    
+            // Select only the certificate image div
+            const certificateImg = document.querySelector(".certificate-img");
+    
+            // Capture only the certificate image
+            const canvas = await html2canvas(certificateImg, { scale: 2 });
             const imgData = canvas.toDataURL("image/png");
-
-            // Initialize jsPDF and add the image
-            const pdf = new jsPDF("p", "pt", "a4");
-            const imgWidth = pdf.internal.pageSize.getWidth();
-            const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
+    
+            // Set PDF size exactly to image size (in pixels converted to points)
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const pdf = new jsPDF({
+                orientation: "landscape", // or "portrait" if needed
+                unit: "px",
+                format: [imgWidth, imgHeight]
+            });
+    
             pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
             pdf.save("student-certificate.pdf");
         }
     </script>
+    
 </body>
 </html>
