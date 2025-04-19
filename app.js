@@ -487,7 +487,7 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
                      <style>
                          body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
                          h1 { margin-top: 20px; font-size: 30px; }
-                         img { max-width: 100%; height: auto; margin-top: 50px; }
+                         img { max-width: 100%; height: 500px; margin-top: 50px; }
                      </style>
                  </head>
                  <body>
