@@ -462,69 +462,65 @@ app.delete("/admin/feedbacks/:id",async(req,res)=>{
         res.status(500).send("An unexpected error occurred. Please try again later.");
       }
     }
+   });// Route to generate PDF and trigger download
+   app.post('/download-certificate', async (req, res) => {
+     const { S_id } = req.body;
+   
+     try {
+         const student = await Student.findOne({ S_id });
+         if (!student) {
+             return res.status(404).send("Student not found.");
+         }
+   
+         // Launch Puppeteer to render the PDF
+         const browser = await puppeteer.launch();
+         const page = await browser.newPage();
+   
+         // Resolve the absolute path to the certificate image
+         const certificateImagePath = path.resolve(__dirname, student.ImagePath);  // Ensure this is an absolute path
+   
+         // Generate HTML content for the certificate
+         const content = `
+             <html>
+                 <head>
+                     <title>Student Certificate</title>
+                     <style>
+                         body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+                         h1 { margin-top: 20px; font-size: 30px; }
+                         img { max-width: 100%; height: auto; margin-top: 50px; }
+                     </style>
+                 </head>
+                 <body>
+                     <h1>Congratulations, ${student.S_name}!</h1>
+                     <p>Your certificate is ready for download.</p>
+                     <img src="file://${certificateImagePath}" alt="Student Certificate Image">
+                 </body>
+             </html>
+         `;
+   
+         // Set the content of the page
+         await page.setContent(content, { waitUntil: 'networkidle0' }); // Wait for network activity to finish
+   
+         // Generate the PDF with options
+         const pdfBuffer = await page.pdf({
+             format: 'A4',
+             printBackground: true,
+             margin: { top: '20px', bottom: '20px', left: '10px', right: '10px' }
+         });
+   
+         await browser.close();
+   
+         // Set headers to download PDF
+         res.setHeader('Content-Disposition', `attachment; filename="${student.S_name}-certificate.pdf"`);
+         res.setHeader('Content-Type', 'application/pdf');
+         res.send(pdfBuffer);
+   
+     } catch (error) {
+         console.error("Error generating PDF:", error);
+         res.status(500).send("An error occurred while generating the PDF.");
+     }
    });
-// Route to generate PDF and trigger download
-app.post('/download-certificate', async (req, res) => {
-  const { S_id } = req.body;
-
-  try {
-      const student = await Student.findOne({ S_id });
-      if (!student) {
-          return res.status(404).send("Student not found.");
-      }
-
-      // Launch Puppeteer to render the PDF
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-
-      // Use a proper URL to render the student certificate
-      const content = `
-          <html>
-              <head>
-                  <title>Student Certificate</title>
-                  <style>
-                      body { font-family: Arial, sans-serif; text-align: center; }
-                      img { max-width: 100%; height: auto; }
-                  </style>
-              </head>
-              <body>
-                  <h1>Welcome, ${student.S_name}!</h1>
-                  <p>Your certificate is ready for download.</p>
-                  <img src="${student.ImagePath}" alt="Student Certificate Image">
-              </body>
-          </html>
-      `;
-
-      // Set the content of the page
-      await page.setContent(content, { waitUntil: 'networkidle0' }); // Wait for network activity to finish
-
-      // Generate the PDF with options
-      const pdfBuffer = await page.pdf({
-          format: 'A4',
-          printBackground: true,
-          margin: {
-              top: '20px',
-              bottom: '20px',
-              left: '10px',
-              right: '10px'
-          }
-      });
-
-      await browser.close();
-
-      // Set headers to download PDF
-      res.setHeader('Content-Disposition', `attachment; filename="${student.S_name}-certificate.pdf"`);
-      res.setHeader('Content-Type', 'application/pdf');
-      res.send(pdfBuffer);
-
-  } catch (error) {
-      console.error("Error generating PDF:", error);
-      res.status(500).send("An error occurred while generating the PDF.");
-  }
-});
-////////////////////////////////////////////////////////////////////////////////////
-
-
+   
 
 // ////////////////////////////
 
